@@ -1,5 +1,12 @@
-HELP.md
+.settings/
 target/
+bin/
+.*
+!.gitignore
+*.log
+
+
+HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -31,3 +38,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.settings/
+target/
+bin/
+.*
+!.gitignore
+*.log
