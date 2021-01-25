@@ -12,7 +12,7 @@ public class ChampionDTO {
 
 	public ChampionDTO(String name, String role) {
 		super();
-		this.name = name;
+		this.name = name;  
 		this.role = role;
 	}
 
