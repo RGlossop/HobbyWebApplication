@@ -7,5 +7,12 @@ import com.qa.persistence.domain.RegionDomain;
 
 @Repository
 public interface RegionRepo extends JpaRepository<RegionDomain, Long> {
-
+	// CRUD
+	
+	// create
+	// reads
+	// updates
+	// deletes
+	
+	// custom SQL queries
 }
