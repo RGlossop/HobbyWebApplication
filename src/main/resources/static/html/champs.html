@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Lore Viewer</title>
+    <!--BootstrapCSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+</head>
+
+<body>
+    <header>
+      <!--NAVBAR-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="../index.html">Lol Lore Viewer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/html/regions.html">Regions</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/html/champs.html">Champions</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+    <div id="PageInfo">
+      <h1>Champs</h1>
+    </div>
+    <div id="createChamps" class="crudDiv">
+      <h2>Create Champ</h2>
+      <div id="create Champ Options">
+        <label>Champ Name:</label>
+        <input type="text" class="form-control" id="champName" 
+        placeholder="Please Enter Champion Name" name="name" required />
+        <br />
+        <label>Role:</label>
+        <input type="text" class="form-control" id="champRole"
+        placeholder="Please Enter Champion Role" name="name" />
+        <br />
+        <label>RegionID:</label>
+        <input type="number" class="form-control" id="champRegionID"
+        placeholder="Please Enter Region ID" name="champRegionID"/>
+        <br/>
+        <button class="btn btn-info" id="createChamp">
+          Create Champ
+        </button>
+      </div>
+    </div>
+    <!--READ CHAMPS-->
+    <div id="readChamps" class="crudDiv">
+      <h2>Read Champs</h2>
+      <div id="ReadChampsOptions">
+        <div class ="row">
+          <div class ="col-md">
+            <button class="btn btn-info" id=getChamps>
+              GetChamps
+            </button>
+          </div>
+          <div class="col-md">
+            <input type="number" class="form-control" id="readChampID"
+            placeholder="Please Enter Champion ID" name="readChampID"/>
+            <br/>
+          </div>
+          <div class="col-md">
+            <button class="btn btn-info" id=getChampById>
+              Get Champ By Id
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="champList">
+      </div>
+    </div>
+    <!--DELETE CHAMPS-->
+    <div id="deleteChamp" class="crudDiv">
+      <h2>Delete Champ</h2>
+      <div id="deleteChampOptions">
+        <div class="row">
+          <div class="col-md">
+            <input type="number" class="form-control" id="deleteChampID"
+            placeholder="Please Enter Champion ID" name="deleteChampID"/>
+            <br/>
+          </div>
+          <div class="col-md">
+            <button class="btn btn-info" id="deleteChampById">
+              Delete Champ By ID
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="deleteStatus">
+      </div>
+    </div>
+
+    <!--Bootstrap script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="../js/champAPI.js"></script>
+</body>
+</html>
