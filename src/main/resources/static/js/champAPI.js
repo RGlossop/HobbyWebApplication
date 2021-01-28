@@ -32,10 +32,9 @@ const retrieveChamps = () => {
         console.log(typeof json);
         for(let i=0; i<json.length; i++) {
             let h3 = document.createElement("h3");
-            let name = document.createTextNode(json[i].name);
+            let name = document.createTextNode("ID: " + json[i].id + "--- Name: " + json[i].name);
             let p = document.createElement("p");
             let role = document.createTextNode(json[i].role);
-            
             h3.appendChild(name);
             p.appendChild(role);
 

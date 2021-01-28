@@ -3,17 +3,22 @@ const getRegions = document.querySelector('#getRegions');
 const getRegionByID = document.querySelector('#getRegionID');
 const deleteRegionByID = document.querySelector('#deleteRegionById');
 const createRegion = document.querySelector('#createRegion');
+const updateRegion = document.querySelector('#updateRegion');
 //forms
 const readRegionID = document.querySelector('#readRegionID');
 const deleteRegionID = document.querySelector('#deleteRegionID');
 //CREATE form
 const createRegionName = document.querySelector('#regionName');
 const createRegionDescription = document.querySelector('#descripton');
-
+//UPDATE form
+const upRegionID = document.querySelector('#upRegionID');
+const upRegionName = document.querySelector('#upRegionName');
+const upRegionDescription = document.querySelector('#upRegionDescription');
 //status Divs
 const regionList = document.querySelector('#regionList');
 const deleteStatus = document.querySelector('#deleteStatus');
 const createStatus = document.querySelector('#createStatus');
+const updateStatus = document.querySelector('#updateStatus');
 
 const retrieveRegions = () => {
     regionList.innerHTML = "";
@@ -139,7 +144,56 @@ const addRegion = () => {
     });
 }
 
+const alterRegion = ()  => {
+
+    updateStatus.innerHTML = "";
+    let fetchString = "http://localhost:8080/champion/update/";
+    let regionId = Number.parseFloat(upRegionID.value);
+    fetchString += regionId;
+    if(regionId <= 0) {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating region, please ensure region ID is correct");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else if(upRegionName.value == "") {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating region, please ensure a name is entered");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else if(upRegionDescription.value == "") {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating region, please ensure a description is entered");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else {
+        fetch(fetchString, {
+            method: 'PUT',
+            body: JSON.stringify({
+                "id" : regionId,
+                "name": upRegionName.value,
+                "description": upRegionDescription.value
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            },
+        })
+        .then((response) => {
+            if(response.status == 202) {
+                let h3 = document.createElement("h3");
+                let successText = document.createTextNode("region Updated");
+                h3.appendChild(successText);
+                updateStatus.appendChild(h3);
+            } else {
+                let h3 = document.createElement("h3");
+                let successText = document.createTextNode("error updating region, please ensure region ID is correct");
+                h3.appendChild(successText);
+                updateStatus.appendChild(h3);
+            }
+        });
+    }
+}
 createRegion.addEventListener('click', addRegion);
 getRegions.addEventListener('click', retrieveRegions);
 getRegionByID.addEventListener('click', retrieveRegion);
+updateRegion.addEventListener('click', alterRegion);
 deleteRegionByID.addEventListener('click', removeRegion);
