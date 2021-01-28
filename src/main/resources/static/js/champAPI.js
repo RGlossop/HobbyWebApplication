@@ -92,7 +92,7 @@ const deleteChamp = () => {
             h3.appendChild(errorText);
             deleteStatus.appendChild(h3);
         }
-    })
+    });
 }
 const addChamp = () => {
     createStatus.innerHTML = "";
@@ -124,7 +124,7 @@ const addChamp = () => {
             h3.appendChild(successText);
             createStatus.appendChild(h3);
         }
-    })
+    });
 }  
 
 const alterChamp = () => {
@@ -185,7 +185,7 @@ const alterChamp = () => {
                 h3.appendChild(successText);
                 updateStatus.appendChild(h3);
             }
-        })
+        });
     }
 
 }    
