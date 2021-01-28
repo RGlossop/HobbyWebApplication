@@ -2,14 +2,20 @@
 const getChamps = document.querySelector('#getChamps');
 const getChampID = document.querySelector('#getChampById');
 const deleteChampByID = document.querySelector('#deleteChampById');
-
+const createChamp = document.querySelector('#createChamp');
 //forms
 const readChampID = document.querySelector('#readChampID');
 const delChampID = document.querySelector('#deleteChampID');
 
+//createForm
+const createChampName = document.querySelector('#champName');
+const createChampRole = document.querySelector('#champRole');
+const createChampRegion = document.querySelector('#champRegionID');
+
 // update divs
 const champList = document.querySelector('#champList');
-const deleteStatus = document.querySelector('#deleteStatus')
+const deleteStatus = document.querySelector('#deleteStatus');
+const createStatus = document.querySelector('#createStatus');
 
 const retrieveChamps = () => {
     champList.innerHTML = "";
@@ -84,22 +90,40 @@ const deleteChamp = () => {
     //.then((json) => console.log(json));
 }
 const addChamp = () => {
-
-    
+    createStatus.innerHTML = "";
+    let champName = createChampName.value;
+    let champRole = createChampRole.value;
+    let regionID = Number.parseFloat(createChampRegion.value)
     fetch("http://localhost:8080/champion/create", {
         method: 'POST',
         body: JSON.stringify({
-            title: 'reeee',
-            body: 'sometimes i hate life',
-            userId: 1,
+            "name": champName,
+            "role": champRole,
+            "region" : {
+                "id" : regionID
+            }
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
     })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-}
+    .then((response) => {
+        if(response.status == 500) {
+            let h3 = document.createElement("h3");
+            let errorText = document.createTextNode("error creating champ, please ensure region ID is correct");
+            h3.appendChild(errorText);
+            createStatus.appendChild(h3);
+        } else if (response.ok) {
+            let h3 = document.createElement("h3");
+            let successText = document.createTextNode("Champ Created");
+            h3.appendChild(successText);
+            createStatus.appendChild(h3);
+        }
+    })
+}  
+    
+
 getChamps.addEventListener('click', retrieveChamps);
 getChampID.addEventListener('click', retrieveChamp);
 deleteChampByID.addEventListener('click', deleteChamp);
+createChamp.addEventListener('click', addChamp);
