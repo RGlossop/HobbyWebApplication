@@ -27,7 +27,7 @@ const retrieveRegions = () => {
             let brText = document.createTextNode("¦============================================¦");
             br.appendChild(brText);
             regionList.appendChild(br);
-            
+
             let h2 = document.createElement("h2");
             let name = document.createTextNode(json[i].name);
             let h3 = document.createElement("h3");
@@ -112,8 +112,33 @@ const removeRegion = () => {
 
 const addRegion = () => {
     createStatus.innerHTML = "";
-
+    let regionName = createRegionName.value;
+    let regionDescrion = createRegionDescription.value;
+    fetch("http://localhost:8080/region/create", {
+        method: 'POST',
+        body: JSON.stringify({
+            "name": regionName,
+            "description": regionDescrion
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then((response) => {
+        if(response.ok) {
+            let h3 = document.createElement("h3");
+            let successText = document.createTextNode("Region Created");
+            h3.appendChild(successText);
+            createStatus.appendChild(h3);
+        } else {
+            let h3 = document.createElement("h3");
+            let errorText = document.createTextNode("error creating region");
+            h3.appendChild(errorText);
+            createStatus.appendChild(h3);
+        }
+    });
 }
+
 createRegion.addEventListener('click', addRegion);
 getRegions.addEventListener('click', retrieveRegions);
 getRegionByID.addEventListener('click', retrieveRegion);
