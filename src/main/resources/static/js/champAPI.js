@@ -3,6 +3,7 @@ const getChamps = document.querySelector('#getChamps');
 const getChampID = document.querySelector('#getChampById');
 const deleteChampByID = document.querySelector('#deleteChampById');
 const createChamp = document.querySelector('#createChamp');
+const updateChamp = document.querySelector('#updateChamp');
 //forms
 const readChampID = document.querySelector('#readChampID');
 const delChampID = document.querySelector('#deleteChampID');
@@ -11,11 +12,16 @@ const delChampID = document.querySelector('#deleteChampID');
 const createChampName = document.querySelector('#champName');
 const createChampRole = document.querySelector('#champRole');
 const createChampRegion = document.querySelector('#champRegionID');
-
-// update divs
+//updateForm
+const upChampID = document.querySelector('#upChampID');
+const upChampName = document.querySelector('#upChampName');
+const upChampRole = document.querySelector('#upChampRole');
+const upChampRegion = document.querySelector('#upChampRegion');
+// status divs
 const champList = document.querySelector('#champList');
 const deleteStatus = document.querySelector('#deleteStatus');
 const createStatus = document.querySelector('#createStatus');
+const updateStatus = document.querySelector('#updateStatus');
 
 const retrieveChamps = () => {
     champList.innerHTML = "";
@@ -87,7 +93,6 @@ const deleteChamp = () => {
             deleteStatus.appendChild(h3);
         }
     })
-    //.then((json) => console.log(json));
 }
 const addChamp = () => {
     createStatus.innerHTML = "";
@@ -121,9 +126,72 @@ const addChamp = () => {
         }
     })
 }  
-    
+
+const alterChamp = () => {
+    updateStatus.innerHTML = "";
+    let fetchString = "http://localhost:8080/champion/update/"
+    let champIdNum = Number.parseFloat(upChampID.value);
+    let champRegionID = Number.parseFloat(upChampRegion.value);
+    fetchString += champIdNum;
+    if(champIdNum <= 0) {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating champ, please ensure champion ID is correct");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else if(upChampName.value == "") {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating champ, please ensure a name is entered");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else if(upChampRole.value == "") {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating champ, please ensure a role is entered");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else if (champRegionID <= 0) {
+        let h3 = document.createElement("h3");
+        let errorText = document.createTextNode("error updating champ, please ensure region ID is correct");
+        h3.appendChild(errorText);
+        updateStatus.appendChild(h3);
+    } else {
+        fetch(fetchString, {
+            method: 'PUT',
+            body: JSON.stringify({
+                "id": champIdNum,
+                "name": upChampName.value,
+                "role": upChampRole.value,
+                "region" : {
+                    "id" : champRegionID
+                }
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            },
+        })
+        .then((response) => {
+            if(response.status == 500) {
+                let h3 = document.createElement("h3");
+                let errorText = document.createTextNode("error updating champ, please ensure region ID and ChampID are correct");
+                h3.appendChild(errorText);
+                updateStatus.appendChild(h3);
+            } else if(response.status == 400) {
+                let h3 = document.createElement("h3");
+                let errorText = document.createTextNode("error updating champ, please ensure ID fields are entered");
+                h3.appendChild(errorText);
+                updateStatus.appendChild(h3);
+            } else if(response.status == 202) {
+                let h3 = document.createElement("h3");
+                let successText = document.createTextNode("Champ Updated");
+                h3.appendChild(successText);
+                updateStatus.appendChild(h3);
+            }
+        })
+    }
+
+}    
 
 getChamps.addEventListener('click', retrieveChamps);
 getChampID.addEventListener('click', retrieveChamp);
 deleteChampByID.addEventListener('click', deleteChamp);
 createChamp.addEventListener('click', addChamp);
+updateChamp.addEventListener('click', alterChamp);

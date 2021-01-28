@@ -36,18 +36,26 @@
     <div id="createChamps" class="crudDiv">
       <h2>Create Champ</h2>
       <div id="create Champ Options">
-        <label>Champ Name:</label>
-        <input type="text" class="form-control" id="champName" 
-        placeholder="Please Enter Champion Name" name="name" required />
-        <br />
-        <label>Role:</label>
-        <input type="text" class="form-control" id="champRole"
-        placeholder="Please Enter Champion Role" name="name" />
-        <br />
-        <label>RegionID:</label>
-        <input type="number" class="form-control" id="champRegionID"
-        placeholder="Please Enter Region ID" name="champRegionID"/>
-        <br/>
+        <div class ="row">
+          <div class="col-md">
+            <label>Champ Name:</label>
+            <input type="text" class="form-control" id="champName" 
+            placeholder="Please Enter Champion Name" name="name"/>
+            <br/>
+          </div>
+          <div class="col-md">
+            <label>Role:</label>
+            <input type="text" class="form-control" id="champRole"
+            placeholder="Please Enter Champion Role" name="name" />
+            <br />
+          </div>
+          <div class="col-md">
+            <label>RegionID:</label>
+            <input type="number" class="form-control" id="champRegionID"
+            placeholder="Please Enter Region ID" name="champRegionID"/>
+            <br/>
+          </div>
+        </div>
         <button class="btn btn-info" id="createChamp">
           Create Champ
         </button>
@@ -83,11 +91,42 @@
     </div>
     <!--UPDATE CHAMPS-->
     <div id="updateChamps" class="crudDiv">
-      <h2>Update champs</h2>
+      <h2>Update Champ</h2>
       <div id="updateChampOptions">
         <div class="row">
-
+          <div class="col-md">
+            <label>Champ ID:</label>
+            <input type="text" class="form-control" id="upChampID" 
+            placeholder="Please Enter Champion ID" name="name" required />
+            <br />
+          </div>
+          <div class="col-md">
+            <label>Champ Name:</label>
+            <input type="text" class="form-control" id="upChampName" 
+            placeholder="Please Enter Champion Name" name="name" required />
+            <br />
+          </div>
+          <div class="col-md">
+            <label>Champ Role:</label>
+            <input type="text" class="form-control" id="upChampRole" 
+            placeholder="Please Enter Champion Role" name="name" required />
+            <br />
+          </div>
+          <div class="col-md">
+            <label>Champ Region:</label>
+            <input type="text" class="form-control" id="upChampRegion" 
+            placeholder="Please Enter Champion region" name="name" required />
+            <br />
+          </div>
         </div>
+        <div class="col-md">
+          <button class="btn btn-info" id="updateChamp">
+            Update Champ
+          </button>
+        </div>
+      </div>
+      <div id="updateStatus">
+      </div>
       </div>
     </div>
     <!--DELETE CHAMPS-->
