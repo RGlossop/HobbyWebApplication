@@ -45,18 +45,14 @@ public class ChampionServiceUnitTest {
 	private ChampionDTO champDTO;
 	
 	private final long ID = 1L;
-	@Test
-	@Disabled
-	private void testMapToDTO() {
 
-	}
 	@BeforeEach
-	void init() {
+	public void init() {
 		this.champList = new ArrayList<>();
 		this.champList.add(testChamp);
 		this.testChamp = new ChampionDomain();
-		testChamp.setName("Braum");
-		testChamp.setRole("Support");
+		this.testChamp.setName("Braum");
+		this.testChamp.setRole("Support");
 		this.testChampWithID = new ChampionDomain();
 		this.testChampWithID.setId(ID);
 		this.testChampWithID.setName(testChamp.getName());
@@ -79,7 +75,7 @@ public class ChampionServiceUnitTest {
 	}
 	
 	@Test
-	void testDeleteChamp() {
+	public void testDeleteChamp() {
 		when(this.repoMock.existsById(ID)).thenReturn(false);
 		
 		assertThat(this.service.delete(ID)).isTrue();

@@ -35,7 +35,6 @@ import com.qa.persistence.dto.ChampionDTO;
 @SpringBootTest(classes = HobbyWebApplication.class)
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:schema-test.sql", "classpath:data-test.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-@ActiveProfiles(profiles = "test")
 public class ChampionControllerIntegrationTest {
 	@Autowired
 	private MockMvc mock;
