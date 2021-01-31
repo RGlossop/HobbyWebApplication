@@ -14,10 +14,12 @@ public class HomePage {
 	private WebElement navRegionPage;
 	
 	public ChampionPage champPage;
+	public RegionPage regionPage;
 	
 	public HomePage(WebDriver driver) {
 		driver.get(URL);
 		champPage = PageFactory.initElements(driver, ChampionPage.class);
+		regionPage = PageFactory.initElements(driver, RegionPage.class);
 	}
 	
 	public void navChamps() {

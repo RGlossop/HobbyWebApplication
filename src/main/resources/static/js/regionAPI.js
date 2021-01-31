@@ -9,7 +9,7 @@ const readRegionID = document.querySelector('#readRegionID');
 const deleteRegionID = document.querySelector('#deleteRegionID');
 //CREATE form
 const createRegionName = document.querySelector('#regionName');
-const createRegionDescription = document.querySelector('#descripton');
+const createRegionDescription = document.querySelector('#description');
 //UPDATE form
 const upRegionID = document.querySelector('#upRegionID');
 const upRegionName = document.querySelector('#upRegionName');
@@ -118,12 +118,12 @@ const removeRegion = () => {
 const addRegion = () => {
     createStatus.innerHTML = "";
     let regionName = createRegionName.value;
-    let regionDescrion = createRegionDescription.value;
+    let regionDescription = createRegionDescription.value;
     fetch("http://localhost:8080/region/create", {
         method: 'POST',
         body: JSON.stringify({
             "name": regionName,
-            "description": regionDescrion
+            "description": regionDescription
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -147,7 +147,7 @@ const addRegion = () => {
 const alterRegion = ()  => {
 
     updateStatus.innerHTML = "";
-    let fetchString = "http://localhost:8080/champion/update/";
+    let fetchString = "http://localhost:8080/region/update/";
     let regionId = Number.parseFloat(upRegionID.value);
     fetchString += regionId;
     if(regionId <= 0) {
