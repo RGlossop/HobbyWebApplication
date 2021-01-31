@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
 public class ChampionDomain {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EqualsAndHashCode.Exclude
 	private Long id;
 
 	@NotNull
@@ -27,4 +29,5 @@ public class ChampionDomain {
 
 	@ManyToOne
 	private RegionDomain region;
+	
 }
