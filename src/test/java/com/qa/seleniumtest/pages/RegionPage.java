@@ -34,7 +34,7 @@ public class RegionPage {
 	// delete Elements
 	@FindBy(id = "deleteRegionID")
 	private WebElement deleteRegionID;
-	@FindBy(id = "deleteRegionByID")
+	@FindBy(id = "deleteRegionById")
 	private WebElement deleteRegion;
 
 	// status elements
