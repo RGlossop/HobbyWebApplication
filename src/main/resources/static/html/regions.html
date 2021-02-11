@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Lore Viewer</title>
+    <!--BootstrapCSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="../index.html">Lol Lore Viewer</a>
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" id="navRegions" href="/html/regions.html">Regions</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="navChamps" href="/html/champs.html">Champions</a>
+                </li>
+              </ul>
+          </nav>
+    </header>
+    <div class="PageInfo">
+      <h1>Regions</h1>
+    </div>
+    <!--CREATE REGION-->
+    <div id="createRegions" class="crudDiv">
+      <h2>Create Region</h2>
+      <div id="createRegionOptions">
+        <div class="row">
+          <div class="col-md">
+            <label>Region Name:</label>
+            <input type="text" class="form-control" id="regionName" 
+            placeholder="Please Enter Region Name" name="name"/>
+            <br/>
+          </div>
+          <div class="col-md">
+            <label>Description:</label>
+            <input type="text" class="form-control" id="description"
+            placeholder="Please Enter Description" name="name" />
+            <br />
+          </div>
+        </div>
+        <button class="btn btn-info" id="createRegion">
+          Create Region
+        </button>
+      </div>
+      <div id="createStatus">
+
+      </div>
+    </div>
+    <!--READ REGION-->
+    <div id="readRegions" class="crudDiv">
+      <h2>Read Regions</h2>
+      <div id="readRegionOptions">
+        <div class="row">
+          <div class="col-md">
+            <button class="btn btn-info" id="getRegions">
+              Get Regions
+            </button>
+          </div>
+          <div class="col-md">
+            <label>Region ID:</label>
+            <input type="text" class="form-control" id="readRegionID" 
+            placeholder="Please Enter Region ID" name="name" required />
+            <br />
+          </div>
+          <div class="col-md">
+            <button class="btn btn-info" id="getRegionID">
+              Get Region By ID
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="regionList">
+      </div>
+      <!--UPDATE REGIONS-->
+      <div id="updateRegions" class="crudDiv">
+        <h2>Update Region</h2>
+        <div id="updateRegionOptions">
+          <div class="row">
+            <div class="col-md">
+              <label>Region ID:</label>
+              <input type="text" class="form-control" id="upRegionID" 
+              placeholder="Please Enter Region ID" name="name" required />
+              <br />
+            </div>
+            <div class="col-md">
+              <label>Region Name:</label>
+              <input type="text" class="form-control" id="upRegionName" 
+              placeholder="Please Enter Region Name" name="name" required />
+              <br />
+            </div>
+            <div class="col-md">
+              <label>Region Description:</label>
+              <input type="text" class="form-control" id="upRegionDescription" 
+              placeholder="Please Enter Region Description" name="name" required />
+              <br />
+            </div>
+          </div>
+          <div class="col-md">
+            <button class="btn btn-info" id="updateRegion">
+              Update Region
+            </button>
+          </div>
+        </div>
+        <div id="updateStatus">
+          
+        </div>
+      </div>
+      <!--DELETE REGIONS-->
+      <div id="deleteRegion" class="crudDiv">
+        <h2>Delete Region</h2>
+        <div id="deleteRegionOptions">
+          <div class="row">
+            <div class="col-md">
+              <input type="number" class="form-control" id="deleteRegionID"
+              placeholder="Please Enter Region ID" name="deleteRegionID"/>
+              <br/>
+            </div>
+            <div class="col-md">
+              <button class="btn btn-info" id="deleteRegionById">
+                Delete Region By ID
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="deleteStatus">
+        </div>
+      </div>
+    </div>
+    <!--Bootstrap script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="../js/regionAPI.js"></script>
+</body>
+</html>

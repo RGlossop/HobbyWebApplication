@@ -7,5 +7,12 @@ import com.qa.persistence.domain.ChampionDomain;
 
 @Repository
 public interface ChampionRepo extends JpaRepository<ChampionDomain, Long>{
-
+	// CRUD
+	
+	// create
+	// reads
+	// updates
+	// deletes
+	
+	// custom SQL queries
 }
