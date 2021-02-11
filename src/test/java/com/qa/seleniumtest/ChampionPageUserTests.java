@@ -72,7 +72,7 @@ public class ChampionPageUserTests {
 		website.navChamps();
 		Thread.sleep(500);
 		
-		website.champPage.deleteChamp("2");
+		website.champPage.deleteChamp("3");
 		Thread.sleep(400);
 		assertTrue(website.champPage.getDeleteStatus().getText().contains("Deleted"));
 	}
